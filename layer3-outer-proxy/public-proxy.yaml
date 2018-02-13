@@ -148,7 +148,7 @@ Mappings:
     eu-west-2:
       AMI: ami-bb373ddf
     us-east-1:
-      AMI: ami-6d1c2007
+      AMI: ami-02e98f78
     us-west-2:
       AMI: ami-d2c924b2
     us-west-1:

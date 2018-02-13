@@ -22,11 +22,19 @@ Note: Take note of the outputs of executed CloudFormation templates as they will
 
 1. In the AWS CloudFormation service launch the 'component-role-flowLogs.yaml'.
 2. In the AWS CloudFormation service launch the `component-pre-eip.yaml'.
-2. In the AWS CloudFormation service launch the `component-component-vpc.yaml'.
+2. In the AWS CloudFormation service launch the `component-vpc.yaml'.
 3. In the AWS CloudFormation service launch the `component-public-network.yaml'.
 4. In the AWS CloudFormation service launch the `component-private-network.yaml'.
 
-### Template - Elastic IPs 
+## Template - IAM Role (component-role-flowLogs.yaml)
+
+#### Outputs
+
+| Output | Description |
+|--------|-------------|
+| ARNID | ARN ID of the created IAM role for Flow-Logs. |
+
+### Template - Elastic IPs (component-pre-eip.yaml)
 
 #### Outputs
 
@@ -36,15 +44,7 @@ Note: Take note of the outputs of executed CloudFormation templates as they will
 | NatGatewayEIP1 | Elastic IP to be assigned to the NAT gateway attached to your first private subnet|
 | NatGatewayEIP2 | Elastic IP to be assigned to the NAT gateway attached to your second private subnet|
 
-## Template - IAM Role
-
-#### Outputs
-
-| Output | Description |
-|--------|-------------|
-| ARNID | ARN ID of the created IAM role for Flow-Logs. |
-
-### Template - VPC
+### Template - VPC (component-vpc.yaml)
 
 #### Inputs 
 
@@ -61,7 +61,7 @@ Note: Take note of the outputs of executed CloudFormation templates as they will
 | InternetGatewayId | ID of the outer proxy service security group |
 
 
-### Template - Public Network
+### Template - Public Network (component-public-network.yaml)
 
 #### Inputs 
 
@@ -85,7 +85,7 @@ Note: Take note of the outputs of executed CloudFormation templates as they will
 | PublicSubnetAz2 | ID of the public subnet in AZ 2 |
 
 
-### Template - Private Network
+### Template - Private Network (component-private-network.yaml)
 
 #### Inputs 
 
