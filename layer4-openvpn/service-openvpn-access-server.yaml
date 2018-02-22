@@ -269,7 +269,7 @@ Mappings:
       '250': "ami-b32ceadc"
     eu-west-2:
       BYOL: "ami-86c3c9e2"
-      '10': "ami-a3c1cbc7"
+      '10': "ami-c7c3d5a3"
       '25': "ami-85c3c9e1"
       '50': "ami-a1c5cfc5"
       '100': "ami-83c1cbe7"
