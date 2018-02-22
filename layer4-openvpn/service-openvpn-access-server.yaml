@@ -423,6 +423,10 @@ Resources:
         -
           Key: "NetworkTier"
           Value: "public"
+        - Key: "scheduler:ec2-startstop"
+          Value: "True"
+        - Key: "backup"
+          Value: "True"
 
   OpenVPNEipAssociation:
     Type: "AWS::EC2::EIPAssociation"
