@@ -61,7 +61,7 @@ Resources:
     Type: AWS::EC2::SecurityGroupIngress
     Properties:
       GroupId:
-        Ref: LDAPSG
+        Ref: VPCCidr
       IpProtocol: tcp
       FromPort: '389'
       ToPort: '389'
