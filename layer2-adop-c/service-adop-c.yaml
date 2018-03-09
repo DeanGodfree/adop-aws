@@ -311,7 +311,7 @@ Resources:
           echo '=========================== Setting up ADOP-C =========================='
           until [[ $(curl -X GET -s ${!INITIAL_ADMIN_USER}:${!INITIAL_ADMIN_PASSWORD_PLAIN}@${!PRIVATE_IP}/jenkins/job/Load_Platform/lastBuild/api/json?pretty=true|grep result|cut -d$' ' -f5|sed 's|[^a-zA-Z]||g') == SUCCESS ]]; do echo "Load_Platform job not finished, sleeping for 5s"; sleep 5; done
           ./adop target set -t http://${!PRIVATE_IP} -u ${!INITIAL_ADMIN_USER} -p ${!INITIAL_ADMIN_PASSWORD_PLAIN}
-          aws s3 cp platform.secrets.sh s3://${SecretS3BucketStore}/platform.secrets.sh
+          echo "===Should do the following here,but its not working currently: aws s3 cp platform.secrets.sh s3://${SecretS3BucketStore}/platform.secrets.sh==="
           set +e
           
           echo "=========================== ADOP-C setup complete ==========================="
@@ -326,7 +326,7 @@ Resources:
     Properties:
       Handle:
         Ref: ADOP5WaitConditionHandle
-      Timeout: 6000
+      Timeout: 9000
 
 Outputs:
   ReleaseNote:
