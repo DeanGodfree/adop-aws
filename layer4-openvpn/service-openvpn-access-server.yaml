@@ -26,7 +26,7 @@ Parameters:
       It is recommend an instance type with support for enhanced networking is selected given the advantage of high throughput and low network latency.
       See https://aws.amazon.com/ec2/instance-types/ for more information.
     Type: String
-    Default: "m4.large"
+    Default: "t2.medium"
   OpenVPNKeyPair:
     Description: |
       The OpenVPN Key pair name.
@@ -56,10 +56,10 @@ Parameters:
     NoEcho: true
   OpenVpnLicenseType:
       Description: |
-        The OpenVPN License type. See OpenVPN Access Server AMI in the market place for AWS charges/OpenVPN license costs.
+        The OpenVPN License type. See OpenVPN Access Server AMI in the market place for AWS charges/OpenVPN license costs. Ensure you agree license from marketplace before proceeding.
         Options: Bring your own license (BYOL), 10/25/50/100/250 connected devices respectively.
       Type: String
-      Default: "BYOL"
+      Default: "10"
       AllowedValues:
         -
           BYOL
