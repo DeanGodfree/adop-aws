@@ -318,16 +318,16 @@ Resources:
           docker network create ${!CUSTOM_NETWORK_NAME}
           sleep 10
           echo "Running ELK ...."
-          docker-compose ${!ELKFILEOPTS} ${!COMPOSE_CMD} "$@" > ELKLogs &
+          docker-compose ${!ELKFILEOPTS} ${!COMPOSE_CMD} "$@" > ELK_Stack_BootLogs &
           sleep 20
           echo " Running ADOP Default containers"
-          docker-compose ${!ADOPFILEOPTS} ${!COMPOSE_CMD} "$@" -d
+          docker-compose ${!ADOPFILEOPTS} ${!COMPOSE_CMD} "$@" -d > ADOP_Stack_BootLogs &
           sleep 80
           echo " Running GITLAB..."
-          docker-compose ${!GITLABFILEOPTS} ${!COMPOSE_CMD} "$@" -d
+          docker-compose ${!GITLABFILEOPTS} ${!COMPOSE_CMD} "$@" -d > Gitlab_Stack_BootLogs &
           sleep 30
           echo " Running PROMETHEUS,GRAPHANA ...."
-          docker-compose ${!DOCKPROMFILEOPTS} ${!COMPOSE_CMD} "$@" -d
+          docker-compose ${!DOCKPROMFILEOPTS} ${!COMPOSE_CMD} "$@" -d > PromGraf_Stack_BootLogs &
           sleep 30
           #./adop compose -i ${!PRIVATE_IP} -f etc/aws/default.yml init
           #sleep 20
