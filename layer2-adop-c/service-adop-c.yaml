@@ -292,7 +292,7 @@ Resources:
           set -e
           mkdir -p /data && cd /data
           git clone -b prom_graf https://github.com/deangodfree/adop-docker-compose.git
-          cd /data/gitlab-adop-docker-compose
+          cd /data/adop-docker-compose
           source conf/env.provider.sh
           source credentials.generate.sh
           source env.config.sh
