@@ -182,17 +182,17 @@ Resources:
         Ebs:
           DeleteOnTermination: 'false'
           VolumeType: gp2
-          VolumeSize: 25
+          VolumeSize: 50
       - DeviceName: /dev/sdg
         Ebs:
           DeleteOnTermination: 'false'
           VolumeType: gp2
-          VolumeSize: 50
+          VolumeSize: 75
       - DeviceName: /dev/sdh
         Ebs:
           DeleteOnTermination: 'false'
           VolumeType: gp2
-          VolumeSize: 50
+          VolumeSize: 75
       ImageId:
         Fn::FindInMap:
         - RegionMap
@@ -326,7 +326,7 @@ Resources:
           echo " Running GITLAB..."
           docker-compose ${!GITLABFILEOPTS} ${!COMPOSE_CMD} "$@" -d > Gitlab_Stack_BootLogs &
           sleep 30
-          echo " Running PROMETHEUS,GRAPHANA ...."
+          echo " Running PROMETHEUS,GRAFANA ...."
           docker-compose ${!DOCKPROMFILEOPTS} ${!COMPOSE_CMD} "$@" -d > PromGraf_Stack_BootLogs &
           sleep 30
           #./adop compose -i ${!PRIVATE_IP} -f etc/aws/default.yml init
@@ -351,7 +351,7 @@ Resources:
     Properties:
       Handle:
         Ref: ADOP5WaitConditionHandle
-      Timeout: 9000
+      Timeout: 15000
 
 Outputs:
   ReleaseNote:
