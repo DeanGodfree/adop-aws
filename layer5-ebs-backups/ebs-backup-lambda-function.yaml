@@ -89,6 +89,7 @@ Resources:
           import os
           
           ec = boto3.client('ec2')
+          resource = boto3.resource('ec2')
           ec2TagName='tag:{tagname}'.format(tagname=os.environ['TagName'])
           ec2TagValue=os.environ['TagValue']
           
@@ -118,6 +119,9 @@ Resources:
                       if dev.get('Ebs', None) is None:
                           continue
                       vol_id = dev['Ebs']['VolumeId']
+                      for tag in volume.tags:
+                        if tag['Key'] == 'Name':
+                          name = tag.get('Value')
                       print "Found EBS volume %s on instance %s" % (
                           vol_id, instance['InstanceId'])
                       snap =  ec.create_snapshot(
@@ -131,6 +135,14 @@ Resources:
                           instance['InstanceId'],
                           retention_days,
                       )
+                      ec.create_tags(
+                        Resources=[
+                          snap['SnapshotId'],
+                        ],
+                        Tags=[
+                            {'Key': 'Name', 'Value': name+"-"+str(datetime.date.today())}
+                        ]
+            )
               for retention_days in to_tag.keys():
                   delete_date = datetime.date.today() + datetime.timedelta(days=retention_days)
                   delete_fmt = delete_date.strftime('%Y-%m-%d')
